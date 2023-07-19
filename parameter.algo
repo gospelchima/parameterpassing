@@ -1,0 +1,27 @@
+function dot_product(v1, v2):
+    if len(v1) != len(v2):
+        return "Error: Vector dimensions are not equal."
+    
+    result = 0
+    for i in range(len(v1)):
+        result += v1[i] * v2[i]
+    
+    return result
+
+
+function check_orthogonal(vectors):
+    if len(vectors) % 2 != 0:
+        return "Error: Number of vectors should be even."
+
+    n = len(vectors) // 2
+    orthogonal_pairs = []
+
+    for i in range(n):
+        v1 = vectors[i * 2]
+        v2 = vectors[i * 2 + 1]
+
+        dot_prod = dot_product(v1, v2)
+        if dot_prod == 0:
+            orthogonal_pairs.append((v1, v2))
+
+    return orthogonal_pairs
